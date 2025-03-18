@@ -12,7 +12,7 @@ permissions:
 jobs:
   release:
     name: Release pushed tag
-    runs-on: Linux
+    runs-on: ubuntu-latest
     steps:
       - name: Create release
         env:
