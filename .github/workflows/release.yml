@@ -2,9 +2,8 @@ name: Create release
 
 on:
   workflow_dispatch:
-  push:
-    tags:
-      - "v*"
+  release:
+    types: [published]
 
 permissions:
   contents: write
@@ -17,8 +16,9 @@ jobs:
       - name: Create release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
+          tag: ${{ github.event.release.tag_name }}
         run: |
-          echo ${{ github.event.release.tag_name }}
+          cd ${{github.workspace}}
+          echo $tag
           echo $tag > data.txt
-          gh release upload $tag data.txt
+          gh release upload ${{github.event.release.tag_name}} data.txt
