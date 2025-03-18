@@ -21,5 +21,4 @@ jobs:
         run: |
           echo ${{ github.event.release.tag_name }}
           echo $tag > data.txt
-          gh auth login
-          gh auth token
+          gh release upload $tag data.txt
