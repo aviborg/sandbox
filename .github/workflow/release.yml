@@ -1,0 +1,25 @@
+name: Create release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release pushed tag
+    runs-on: Matlab
+    steps:
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          echo ${{ github.event.release.tag_name }}
+          echo $tag > data.txt
+          gh auth login
+          gh auth token
