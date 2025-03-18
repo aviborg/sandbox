@@ -12,7 +12,7 @@ permissions:
 jobs:
   release:
     name: Release pushed tag
-    runs-on: Matlab
+    runs-on: Linux
     steps:
       - name: Create release
         env:
