@@ -5,4 +5,4 @@ permalink: /
 ---
 
 # Sandbox
-Test of github pages
+Test of github pages version 2
